@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentiment Shock | AI Volatility Forecasting</title>
+    <title>SentimentShock | AI Market Intelligence for Business</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
@@ -11,39 +11,32 @@
 </head>
 <body class="dark-theme">
     <div id="app">
-        <aside class="sidebar glass">
+        <nav class="top-nav glass">
             <div class="logo">
                 <span class="logo-icon">⚡</span>
                 <h1 class="logo-text">SENTIMENT<span>SHOCK</span></h1>
             </div>
-            <nav>
-                <ul>
-                    <li class="active" data-section="overview">Market Overview</li>
-                    <li data-section="pulse">The Pulse (Demo)</li>
-                    <li data-section="backtest">Backtest Proof</li>
-                </ul>
-            </nav>
-            <div class="sidebar-footer">
-                <p>Graduation Project 2026</p>
-                <div class="badge">AI POWERED</div>
+            <div class="nav-links">
+                <a href="#overview">Intelligence</a>
+                <a href="#pulse">The Pulse</a>
+                <a href="#backtest">Performance</a>
             </div>
-        </aside>
+            <div class="user-profile">
+                <span class="status-dot"></span>
+                <span class="system-status">System Live</span>
+            </div>
+        </nav>
 
         <main class="content">
-            <header class="top-bar">
-                <div class="search-bar glass">
-                    <input type="text" placeholder="Search Assets (NVDA, USO, EGX)..." disabled>
-                </div>
-                <div class="user-profile">
-                    <span class="status-dot"></span>
-                    <p>System Live</p>
-                </div>
-            </header>
+            <section id="hero" class="hero-section">
+                <h1>Predict Market Shocks<br>Before They Happen.</h1>
+                <p class="hero-subtitle">Enterprise-grade volatility forecasting powered by real-time LLM sentiment analysis and hybrid deep learning models. Actionable insights for modern financial institutions.</p>
+            </section>
 
-            <section id="overview" class="section active">
+            <section id="overview" class="section">
                 <div class="section-header">
-                    <h2>Market Intelligence</h2>
-                    <p>Real-time volatility forecasting driven by LLM sentiment analysis.</p>
+                    <h2>Live Market Intelligence</h2>
+                    <p>Real-time volatility forecasting and return estimates across key global assets.</p>
                 </div>
                 <div class="dashboard-grid" id="asset-grid">
                     <!-- Cards injected by main.js -->
@@ -52,8 +45,8 @@
 
             <section id="pulse" class="section">
                 <div class="section-header">
-                    <h2>"The Pulse" Interactive</h2>
-                    <p>Witness how major news events instantly shift model reasoning and market risk.</p>
+                    <h2>"The Pulse" Engine</h2>
+                    <p>Witness how our AI interprets major news events to shift risk models instantly.</p>
                 </div>
                 <div class="pulse-container glass" id="pulse-list">
                     <!-- News items injected by main.js -->
@@ -63,7 +56,7 @@
             <section id="backtest" class="section">
                 <div class="section-header">
                     <h2>Statistical Validation</h2>
-                    <p>Our Sentiment-Aware Strategy vs. Buy & Hold Benchmarks.</p>
+                    <p>Our Sentiment-Aware Strategy consistently outperforms traditional Buy & Hold benchmarks.</p>
                 </div>
                 <div class="backtest-grid">
                     <div class="chart-container glass">
@@ -91,6 +84,15 @@
                     </div>
                 </div>
             </section>
+            
+            <footer class="site-footer">
+                <div class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <h2 class="logo-text">SENTIMENT<span>SHOCK</span></h2>
+                </div>
+                <p>Enterprise AI Market Research & Quantitative Modeling</p>
+                <p class="copyright">© 2026 SentimentShock. All rights reserved.</p>
+            </footer>
         </main>
     </div>
     <script type="module" src="./src/main.js"></script>

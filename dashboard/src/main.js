@@ -1,27 +1,32 @@
 import { marketData } from './data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    initNavigation();
+    // Smooth scrolling for navigation links
+    initSmoothScrolling();
+    
+    // Render dynamic content
     renderAssetCards();
     renderPulseNews();
     renderBacktestChart();
 });
 
-function initNavigation() {
-    const navItems = document.querySelectorAll('nav li');
-    const sections = document.querySelectorAll('.section');
-
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const target = item.getAttribute('data-section');
+function initSmoothScrolling() {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
             
-            navItems.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-
-            sections.forEach(s => {
-                s.classList.remove('active');
-                if (s.id === target) s.classList.add('active');
-            });
+            if (targetSection) {
+                // Account for the fixed top nav (80px + 20px padding)
+                const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset - 100;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 }
@@ -53,7 +58,7 @@ function renderAssetCards() {
             <div class="sentiment-meter">
                 <div class="sentiment-fill" style="width: ${(asset.sentiment + 1) * 50}%; background-color: ${asset.color}; color: ${asset.color}"></div>
             </div>
-            <p style="font-size: 0.7rem; color: #94a3b8; margin-top: 10px; text-align: center;">
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 12px; text-align: center;">
                 Sentiment Analysis: ${Math.round(asset.sentiment * 100)}% Confidence
             </p>
         </div>
@@ -87,15 +92,15 @@ function renderBacktestChart() {
     const container = document.getElementById('equity-chart');
     // Simple SVG mock of a winning strategy curve
     container.innerHTML = `
-        <svg viewBox="0 0 800 300" style="width: 100%; height: 100%;">
+        <svg viewBox="0 0 800 300" style="width: 100%; height: 100%; display: block;">
             <!-- Benchmark Curve (Gray) -->
             <path d="M0,250 L100,240 L200,260 L300,230 L400,245 L500,210 L600,225 L700,200 L800,210" 
                   fill="none" stroke="#444" stroke-width="2" stroke-dasharray="5,5" />
             <!-- Our Hybrid Curve (Green) -->
             <path d="M0,250 L100,230 L200,220 L300,180 L400,160 L500,120 L600,110 L700,80 L800,60" 
                   fill="none" stroke="#76b900" stroke-width="4" />
-            <text x="10" y="20" fill="#76b900" font-size="12" font-weight="bold">Hybrid Sentiment Strategy</text>
-            <text x="10" y="40" fill="#666" font-size="12">Buy & Hold Benchmark</text>
+            <text x="10" y="20" fill="#76b900" font-size="14" font-weight="bold">Hybrid Sentiment Strategy</text>
+            <text x="10" y="40" fill="#94a3b8" font-size="14">Buy & Hold Benchmark</text>
         </svg>
     `;
 }
