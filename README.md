@@ -580,9 +580,9 @@ The updated `plot_impact_types()` visualization reveals a key finding:
 
 | Asset | Direct News Count | Indirect News Count | Avg Direct Sentiment | Avg Indirect Sentiment |
 |---|---|---|---|---|
-| NVDA | ~40% | ~60% | +0.72 | +0.31 |
-| USO | ~35% | ~65% | -0.18 | -0.05 |
-| EGX | ~25% | ~75% | +0.45 | +0.04 |
+| NVDA | ~75% | ~25% | +0.360 | +0.132 |
+| USO | ~65% | ~35% | +0.200 | +0.084 |
+| EGX | ~15% | ~85% | +0.344 | +0.197 |
 
 **Finding:** Across all assets, indirect news consistently scores much closer to **0**, confirming the hypothesis that indirect news contributes far less directional signal. EGX has the highest proportion of indirect news, which explains why Gemma's `gemma_dispersion` (uncertainty in indirect signals) is an especially important feature for the Egyptian market.
 
