@@ -96,54 +96,81 @@ flowchart TD
         E2[("model_features\nMaster Table")]
     end
 
-    A1 & A2 --> B2
+    A1 --> B2
+    A2 --> B2
     A3 --> B1 --> B2
     A4 --> B2
-    B2 --> B3 --> C1 & C2
-    C2 --> D1 --> D2 & D3
-    D2 & D3 --> C2
-    C1 & C2 --> E1 --> E2
+    B2 --> B3
+    B3 --> C1
+    B3 --> C2
+    C2 --> D1
+    D1 --> D2
+    D1 --> D3
+    D2 --> C2
+    D3 --> C2
+    C1 --> E1
+    C2 --> E1
+    E1 --> E2
 ```
 
 ### 2.2 Modelling & Inference Pipeline
 
 ```mermaid
 flowchart TD
-    subgraph STORE[("🗄️ model_features\n4,679 rows · 28 features")]
+    STORE[("model_features · 4679 rows · 28 features")]
+
+    subgraph ECONO["Phase 5 — Econometric Baselines"]
+        F1["econometrics.py
+CAPM · Fama-French OLS
+ARIMA · GARCH · EGARCH
+TGARCH · GARCH-X Sentiment"]
+        F2["GARCH Residuals
+saved back to model_features"]
     end
 
-    subgraph ECONO["📊 Phase 5 — Econometric Baselines"]
-        F1["econometrics.py\nCAMP · Fama-French OLS\nARIMA(1,0,1)\nGARCH · EGARCH · TGARCH\nGARCH-X with Sentiment"]
-        F2["GARCH Residuals\nsaved back to model_features"]
+    subgraph ML["Phase 6 — ML Ensembles"]
+        G1["ml_ensembles.py
+XGBoost · Random Forest
+Baseline vs FinBERT vs Gemma"]
+        G2["SHAP Interpretability"]
+        G3[("ml_predictions")]
     end
 
-    subgraph ML["🌲 Phase 6 — ML Ensembles"]
-        G1["ml_ensembles.py\nXGBoost · Random Forest\n3 Feature Sets:\nBaseline · FinBERT · Gemma"]
-        G2["SHAP Interpretability\nFeature Importance\nDependence Plots"]
-        G3[("ml_predictions\nOut-of-Sample")]
+    subgraph DL["Phase 7 — Deep Learning Hybrids"]
+        H1["Standalone LSTM
+30-day sequence lookback"]
+        H2["GARCH-LSTM Hybrid
+GARCH residuals + Gemma sentiment"]
+        H3[("dl_predictions")]
     end
 
-    subgraph DL["🔁 Phase 7 — Deep Learning Hybrids"]
-        H1["dl_hybrid.py\nStandalone LSTM\n30-day sequence lookback"]
-        H2["GARCH-LSTM Hybrid\n+ GARCH residuals\n+ Gemma sentiment"]
-        H3[("dl_predictions\nOut-of-Sample")]
+    subgraph BACK["Phase 8 — Backtesting"]
+        I1["backtest.py
+Volatility-Targeting Strategy
+Target daily vol = 1%
+Sharpe · Max Drawdown"]
+        I2["Equity Curves · All models vs Buy and Hold"]
     end
 
-    subgraph BACK["📈 Phase 8 — Backtesting"]
-        I1["backtest.py\nVolatility-Targeting Strategy\nTarget σ = 1% daily\nSharpe · Max Drawdown"]
-        I2["equity_curves_combined.png\nAll models vs Buy & Hold"]
-    end
-
-    subgraph INSIGHT["💡 Phase 9 — Business Insights"]
-        J1["business_insights.py\nXGBoost → Expected 5d Return\nLSTM-Hybrid → Predicted Volatility\nConfidence Cone Visualization"]
+    subgraph INSIGHT["Phase 9 — Business Insights"]
+        J1["business_insights.py
+Expected 5d Return
+Predicted Volatility
+Confidence Cone"]
     end
 
     STORE --> F1 --> F2 --> STORE
     STORE --> G1 --> G2
     G1 --> G3
-    STORE --> H1 & H2 --> H3
-    G3 & H3 --> I1 --> I2
-    STORE & H3 --> J1
+    STORE --> H1
+    STORE --> H2
+    H1 --> H3
+    H2 --> H3
+    G3 --> I1
+    H3 --> I1
+    I1 --> I2
+    STORE --> J1
+    H3 --> J1
 ```
 
 ### 2.3 Project Directory Structure
