@@ -1,0 +1,20 @@
+| Asset   | Variation   | Model        |       RMSE |        MAE |
+|:--------|:------------|:-------------|-----------:|-----------:|
+| NVDA    | Baseline    | XGBoost      | 0.0109236  | 0.00905092 |
+| NVDA    | Baseline    | RandomForest | 0.0109275  | 0.00903351 |
+| NVDA    | FinBERT     | XGBoost      | 0.0112336  | 0.00936718 |
+| NVDA    | FinBERT     | RandomForest | 0.0110431  | 0.00921437 |
+| NVDA    | Gemma       | XGBoost      | 0.0109734  | 0.00922336 |
+| NVDA    | Gemma       | RandomForest | 0.0109876  | 0.00917084 |
+| USO     | Baseline    | XGBoost      | 0.0113934  | 0.00756403 |
+| USO     | Baseline    | RandomForest | 0.011805   | 0.0079591  |
+| USO     | FinBERT     | XGBoost      | 0.0122836  | 0.00805576 |
+| USO     | FinBERT     | RandomForest | 0.0119517  | 0.00804627 |
+| USO     | Gemma       | XGBoost      | 0.010848   | 0.0073479  |
+| USO     | Gemma       | RandomForest | 0.0111582  | 0.00772476 |
+| EGX     | Baseline    | XGBoost      | 0.00530436 | 0.00457477 |
+| EGX     | Baseline    | RandomForest | 0.00518972 | 0.00451093 |
+| EGX     | FinBERT     | XGBoost      | 0.00540513 | 0.00460113 |
+| EGX     | FinBERT     | RandomForest | 0.00513993 | 0.00444071 |
+| EGX     | Gemma       | XGBoost      | 0.0049173  | 0.00414862 |
+| EGX     | Gemma       | RandomForest | 0.00502024 | 0.00428881 |

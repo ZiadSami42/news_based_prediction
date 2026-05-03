@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Shock | AI Volatility Forecasting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body class="dark-theme">
+    <div id="app">
+        <aside class="sidebar glass">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <h1 class="logo-text">SENTIMENT<span>SHOCK</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active" data-section="overview">Market Overview</li>
+                    <li data-section="pulse">The Pulse (Demo)</li>
+                    <li data-section="backtest">Backtest Proof</li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <p>Graduation Project 2026</p>
+                <div class="badge">AI POWERED</div>
+            </div>
+        </aside>
+
+        <main class="content">
+            <header class="top-bar">
+                <div class="search-bar glass">
+                    <input type="text" placeholder="Search Assets (NVDA, USO, EGX)..." disabled>
+                </div>
+                <div class="user-profile">
+                    <span class="status-dot"></span>
+                    <p>System Live</p>
+                </div>
+            </header>
+
+            <section id="overview" class="section active">
+                <div class="section-header">
+                    <h2>Market Intelligence</h2>
+                    <p>Real-time volatility forecasting driven by LLM sentiment analysis.</p>
+                </div>
+                <div class="dashboard-grid" id="asset-grid">
+                    <!-- Cards injected by main.js -->
+                </div>
+            </section>
+
+            <section id="pulse" class="section">
+                <div class="section-header">
+                    <h2>"The Pulse" Interactive</h2>
+                    <p>Witness how major news events instantly shift model reasoning and market risk.</p>
+                </div>
+                <div class="pulse-container glass" id="pulse-list">
+                    <!-- News items injected by main.js -->
+                </div>
+            </section>
+
+            <section id="backtest" class="section">
+                <div class="section-header">
+                    <h2>Statistical Validation</h2>
+                    <p>Our Sentiment-Aware Strategy vs. Buy & Hold Benchmarks.</p>
+                </div>
+                <div class="backtest-grid">
+                    <div class="chart-container glass">
+                        <h3>Equity Curve: Hybrid LSTM vs. Benchmark</h3>
+                        <div class="mock-chart" id="equity-chart">
+                            <!-- SVG Chart injected by main.js -->
+                        </div>
+                    </div>
+                    <div class="metrics-panel glass">
+                        <h3>Key Performance Indicators</h3>
+                        <div class="kpi-list">
+                            <div class="kpi">
+                                <span>Sharpe Ratio</span>
+                                <strong>1.27 vs 0.65</strong>
+                            </div>
+                            <div class="kpi">
+                                <span>Max Drawdown</span>
+                                <strong class="pos">-10.8% vs -34.6%</strong>
+                            </div>
+                            <div class="kpi">
+                                <span>Predictive Lift</span>
+                                <strong>+24.5%</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
