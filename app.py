@@ -5,7 +5,7 @@ import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime, timedelta
-from st_annotated_text import annotated_text
+from annotated_text import annotated_text
 
 # Page Config
 st.set_page_config(
