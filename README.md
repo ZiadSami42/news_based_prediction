@@ -832,7 +832,7 @@ Traditional risk management models had **no warning signal** before major news e
 
 | Limitation | Impact | Proposed Solution |
 |---|---|---|
-| Gemma API rate limits (free tier) | Processing ~25,000 articles took significant time | Paid API tier or local quantized model (Gemma 2B) |
+| Gemma API rate limits (free tier) | Processing ~62,000 articles took significant time | Paid API tier or local quantized model (Gemma 2B) |
 | EGX news coverage is sparse | Fewer articles reduces signal reliability for Egyptian market | Add Al-Mal newspaper API, social media (X/Twitter) |
 | No real-time ingestion | Pipeline is batch-only; requires manual re-run for new data | Implement a daily scheduled job (cron/Airflow) |
 | LSTM hyperparameters not tuned | Fixed architecture (64 hidden, 2 layers, 30-day window) | Bayesian optimization via Optuna |
