@@ -64,15 +64,43 @@ try:
 except:
     df_dl = pd.DataFrame()
 
-# Latest Metrics
-latest = df_features.iloc[-1]
-prev = df_features.iloc[-2]
+# Time Frame Selection
+st.sidebar.markdown("---")
+time_frame = st.sidebar.selectbox(
+    "Select Time Frame", 
+    ["1 Month", "3 Months", "6 Months", "1 Year", "All Time"],
+    index=4
+)
 
-col1, col2, col3, col4 = st.columns(4)
-col1.metric("Current Price", f"${latest['close']:,.2f}", f"{(latest['log_return_1d']*100):.2f}%")
-col2.metric("News Volume", int(latest['news_volume']), int(latest['news_volume'] - prev['news_volume']))
-col3.metric("Gemma Sentiment", f"{latest['gemma_mean']:.2f}", f"{(latest['gemma_mean'] - prev['gemma_mean']):.2f}")
-col4.metric("Realized Vol (22d)", f"{(latest['realized_vol_22d']*100):.2f}%")
+if time_frame != "All Time":
+    days_map = {"1 Month": 30, "3 Months": 90, "6 Months": 180, "1 Year": 365}
+    days = days_map[time_frame]
+    
+    # Use the last date in the data as the anchor
+    last_date = pd.to_datetime(df_features['trading_session']).max()
+    cutoff_date = last_date - timedelta(days=days)
+    
+    df_features = df_features[pd.to_datetime(df_features['trading_session']) >= cutoff_date].copy()
+    if not df_ml.empty:
+        df_ml = df_ml[pd.to_datetime(df_ml['trading_session']) >= cutoff_date].copy()
+    if not df_dl.empty:
+        df_dl = df_dl[pd.to_datetime(df_dl['trading_session']) >= cutoff_date].copy()
+
+# Latest Metrics (Always based on absolute latest available data)
+con = get_con()
+full_latest = con.execute(f"SELECT * FROM model_features WHERE asset_tag = '{selected_asset}' ORDER BY trading_session DESC LIMIT 2").df()
+
+if not full_latest.empty:
+    latest = full_latest.iloc[0]
+    prev = full_latest.iloc[1] if len(full_latest) > 1 else latest
+    
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Current Price", f"${latest['close']:,.2f}", f"{(latest['log_return_1d']*100):.2f}%")
+    col2.metric("News Volume", int(latest['news_volume']), int(latest['news_volume'] - prev['news_volume']))
+    col3.metric("Gemma Sentiment", f"{latest['gemma_mean']:.2f}", f"{(latest['gemma_mean'] - prev['gemma_mean']):.2f}")
+    col4.metric("Realized Vol (22d)", f"{(latest['realized_vol_22d']*100):.2f}%")
+else:
+    st.warning("No data found for this asset.")
 
 # Tabs
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
