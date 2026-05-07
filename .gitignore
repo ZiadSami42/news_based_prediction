@@ -11,11 +11,10 @@ env/
 .agents/
 .gemini/
 
-# ── Data Lake (large binary file, not for version control) ────────────────────
-data/prediction.db
+# ── Data Lake ────────────────────────────────────────────────────────────────
 data/prediction.db.wal
 
-# ── Raw Data (large files, share separately or via DVC) ───────────────────────
+# ── Raw Data ────────────────────────────────────────────────────────────────
 raw_data/
 egypt_news_scraped_json_files/
 
