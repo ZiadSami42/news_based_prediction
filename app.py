@@ -96,7 +96,7 @@ with tab1:
     # Sentiment Overlay
     fig.add_trace(go.Bar(
         x=df_features['trading_session'], y=df_features['gemma_mean'],
-        name="Gemma Sentiment", marker_color='rgba(255, 255, 255, 0.2)',
+        name="Gemma Sentiment", marker_color='#7221cf',
         yaxis="y2"
     ))
     
