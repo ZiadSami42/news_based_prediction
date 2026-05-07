@@ -207,5 +207,5 @@ with tab5:
 
 # Footer
 st.markdown("---")
-st.markdown("📊 **Research Documentation:** [APPENDIX.md](https://github.com/[USER]/news_based_prediction/blob/main/APPENDIX.md) | [README.md](https://github.com/[USER]/news_based_prediction/blob/main/README.md)")
-st.markdown("© 2026 SentimentShock Analytics Team")
+st.markdown("📊 **Research Documentation:** [README.md](https://github.com/ZiadSami42/news_based_prediction/blob/main/README.md)")
+st.markdown("© 2026 SentimentShock")
